@@ -10,5 +10,12 @@
   <%= @document.description %>
 </p>
 
+<% if @document.document_image? %>
+  <p>
+    <strong>Document Image:</strong><br />
+    <%= image_tag @document.document_image.url, height: '500px' %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_document_path(@document) %> |
 <%= link_to 'Back', documents_path %>
