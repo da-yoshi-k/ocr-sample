@@ -57,14 +57,25 @@ class DocumentsController < ApplicationController
     end
   end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_document
-      @document = Document.find(params[:id])
-    end
+  def execute_ocr
+    # pp params[:language]
+    @document = Document.find(params[:document_id])
+    image_url = "#{Rails.root}/public#{@document.document_image.url}"
+    image = RTesseract.new(image_url, lang: params[:language])
+    @text = image.to_s.gsub(/(\r\n|\r|\n)/, '\\n')
+    @text = 'テキストが検出できませんでした' if @text.blank?
+    # pp @text
+  end
 
-    # Only allow a list of trusted parameters through.
-    def document_params
-      params.require(:document).permit(:title, :description, :document_image)
-    end
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_document
+    @document = Document.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def document_params
+    params.require(:document).permit(:title, :description, :document_image)
+  end
 end

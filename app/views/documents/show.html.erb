@@ -15,6 +15,17 @@
     <strong>Document Image:</strong><br />
     <%= image_tag @document.document_image.url, height: '500px' %>
   </p>
+
+  <p>
+    <%= form_with url: document_texts_path(@document.id), method: :get, local: false do |form| %>
+      <strong>Language:</strong>
+      English:<%= form.radio_button :language, 'eng', checked: true %>
+      Japanese:<%= form.radio_button :language, 'jpn' %>
+      <br />
+      <%= submit_tag "ライブラリのOCR実行" %>
+    <% end %>
+    <div class="js-ocr-result"></div>
+  </p>
 <% end %>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |
