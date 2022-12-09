@@ -1,0 +1,2 @@
+const resultElement = document.querySelector(".js-ocr-result")
+resultElement.innerText = "<%= html_escape(@text).gsub(/\n/, '<br>').html_safe %>"
