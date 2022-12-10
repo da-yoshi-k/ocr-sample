@@ -26,6 +26,13 @@
     <% end %>
     <div class="js-ocr-result"></div>
   </p>
+
+  <p>
+    <%= form_with url: document_vision_texts_path(@document.id), method: :get, local: false do |form| %>
+      <%= submit_tag "Cloud VisionのOCR実行" %>
+    <% end %>
+    <div class="js-vision-result"></div>
+  </p>
 <% end %>
 
 <%= link_to 'Edit', edit_document_path(@document) %> |

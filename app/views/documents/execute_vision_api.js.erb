@@ -1,0 +1,2 @@
+const resultVisionElement = document.querySelector(".js-vision-result")
+resultVisionElement.innerText = "<%= html_escape(@vision_text).gsub(/\n/, '<br>').html_safe %>"

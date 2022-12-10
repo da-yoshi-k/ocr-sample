@@ -69,6 +69,20 @@ class DocumentsController < ApplicationController
     # pp @text
   end
 
+  def execute_vision_api
+    @document = Document.find(params[:document_id])
+    image = @document.document_image.url(query: { 'response-content-disposition' => 'attachment' })
+    image_annotator_client = Google::Cloud::Vision::V1::ImageAnnotator::Client.new
+    response = image_annotator_client.document_text_detection(
+      image: image, max_results: 1, image_context: { language_hints: %i[ja en] }
+    )
+    @vision_text = ''
+    response.responses.each do |res|
+      @vision_text << res.text_annotations[0].description.gsub(/(\r\n|\r|\n)/, '\\n')
+    end
+    # pp @vision_text
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
