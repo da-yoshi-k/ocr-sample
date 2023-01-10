@@ -1,24 +1,8 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+本リポジトリはRUNTEQ Advent Calendar 2022に参加するために技術調査レベルでtesseract及びCloud Vision APIに入門するために作成しました。
+別途S3に画像をアップロードするための設定およびCloud Vision APIを利用するためのAPIキーの発行等が必要になります。
 
-Things you may want to cover:
+## 関連Qiita記事
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+[【rtesseract】Railsアプリ上でOCRとAI-OCRしてみる【Cloud Vision API】](https://qiita.com/da-yoshi-k/items/546904a222acf57d6806)
