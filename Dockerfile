@@ -26,7 +26,7 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && apt-get install -y build-essential nodejs yarn \
 && add-apt-repository ppa:alex-p/tesseract-ocr5\
 && apt-get update\
-&& apt-get install -y tesseract-ocr libtesseract-dev tesseract-ocr-jpn
+&& apt-get install -y tesseract-ocr tesseract-ocr-jpn
 
 RUN gem install bundler:$BUNDLER_VERSION
 
