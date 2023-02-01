@@ -23,8 +23,8 @@ RUN curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
 && wget --quiet -O - /tmp/pubkey.gpg https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
 && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \
 && apt-get install apt-transport-https \
-&& echo "deb https://notesalexp.org/tesseract-ocr5/$(lsb_release -cs)/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/notesalexp.list > /dev/null \
-&& wget -O - https://notesalexp.org/debian/alexp_key.asc | sudo apt-key add - \
+&& echo "deb https://notesalexp.org/tesseract-ocr5/$(lsb_release -cs)/ $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/notesalexp.list > /dev/null \
+&& wget -O - https://notesalexp.org/debian/alexp_key.asc | apt-key add - \
 && apt-get update -qq \
 && apt-get install -y build-essential nodejs yarn \
 && apt-get install -y tesseract-ocr tesseract-ocr-jpn
