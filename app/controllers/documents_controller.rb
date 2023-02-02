@@ -66,7 +66,6 @@ class DocumentsController < ApplicationController
     image = RTesseract.new(image_url, lang: params[:language])
     @text = image.to_s.gsub(/(\r\n|\r|\n)/, '\\n')
     @text = 'テキストが検出できませんでした' if @text.blank?
-    # pp @text
   end
 
   def execute_vision_api
