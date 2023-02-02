@@ -79,7 +79,6 @@ class DocumentsController < ApplicationController
     response.responses.each do |res|
       @vision_text << res.text_annotations[0].description.gsub(/(\r\n|\r|\n)/, '\\n')
     end
-    # pp @vision_text
   end
 
   private
